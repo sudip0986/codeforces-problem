@@ -1,6 +1,6 @@
 problem link https://codeforces.com/contest/1786/problem/A1
 
-solve
+solve :
 
 #include <iostream>
 using namespace std;

@@ -1,0 +1,73 @@
+problem link https://codeforces.com/contest/1786/problem/A1
+
+solve
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int A = 1;
+        int B = 0;
+        int sum = 1;
+        int ca = 5, cb = 0; // Initialize counters for consecutive A and B increments
+        for (int i = 2; i <= n; i++) { // Corrected loop termination condition
+           if(cb<2)
+           {
+             if (cb == 0)
+              {
+                if ((n - sum) >= i) {
+                    B += i;
+                    sum += i;
+                    cb++;
+                    
+                } else {
+                    B += (n - sum);
+                    break; // Terminating loop when reaching the end
+                }
+            } 
+            
+            else if (cb == 1) {
+                if ((n - sum) >= i) {
+                    B += i;
+                    sum += i;
+                    cb++;
+                    ca=0;
+                    
+                } else {
+                    B += (n - sum);
+                    break; // Terminating loop when reaching the end
+                }
+           }
+           }
+
+            else if(ca<2)
+           {
+             if (ca ==0) {
+                if ((n - sum) >= i) {
+                    A += i;
+                    sum += i;
+                    ca++;
+                } else {
+                    A += (n - sum);
+                    break; // Terminating loop when reaching the end
+                }
+            } else if(ca ==1) {
+                if ((n - sum) >= i) {
+                    A += i;
+                    sum += i;
+                    ca++;
+                    cb=0;
+                } else {
+                    A += (n - sum);
+                    break; // Terminating loop when reaching the end
+                }
+            }
+        }
+    }
+    cout<< A <<" "<<B <<endl;
+   }}

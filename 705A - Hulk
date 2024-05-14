@@ -1,0 +1,32 @@
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    string a="I hate that";
+    string b="I love that";
+    string temp;
+    for(int i=1; i<=n; i++)
+    {
+        if(i%2==0)
+        {
+            temp+=b;
+            temp+=" ";
+        }
+        else
+        {
+            temp+=a;
+         temp+=" ";
+        }
+    }
+    
+    int k=5;
+    while(k--)
+    {
+        temp.pop_back();
+    }
+    temp += "it";
+    cout<<temp;
+}

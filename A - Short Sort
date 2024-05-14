@@ -1,0 +1,51 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) {
+        string s;
+        cin >> s;
+
+        // Check original string
+        if (s == "abc") {
+            cout << "yes" << endl;
+            continue; // Continue with next test case
+        }
+
+        // Perform swaps and check
+        // Swap 1st and 2nd characters
+        swap(s[0], s[1]);
+        if (s == "abc") {
+            cout << "yes" << endl;
+            continue;
+        }
+        // Undo previous swap
+        swap(s[0], s[1]);
+
+        // Swap 1st and 3rd characters
+        swap(s[0], s[2]);
+        if (s == "abc") {
+            cout << "yes" << endl;
+            continue;
+        }
+        // Undo previous swap
+        swap(s[0], s[2]);
+
+        // Swap 2nd and 3rd characters
+        swap(s[1], s[2]);
+        if (s == "abc") {
+            cout << "yes" << endl;
+            continue;
+        }
+
+        // No match found
+        cout << "no" << endl;
+    }
+
+    return 0;
+}
+

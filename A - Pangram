@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+    
+    if(n<26)
+    {
+       cout<<"NO";
+            return 0; 
+    }
+    
+    for(char i='A'; i<='Z'; i++)
+    {
+        bool check=0;
+        for(int k=0; k<n; k++)
+        {
+            if(i==s[k] || (i+('a'-'A'))==s[k])
+            {
+                check=1;
+                break;
+            }
+        }
+        
+        if(check==0)
+        {
+            cout<<"NO";
+            return 0;
+        }
+    }
+    
+    cout<<"YES";
+} 

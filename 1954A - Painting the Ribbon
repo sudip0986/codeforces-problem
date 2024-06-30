@@ -1,0 +1,80 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t; // Number of test cases
+    while (t--)
+    {
+        int n, m, k;
+        cin >> n >> m >> k; // Read values of n, m, k for current test case
+        
+        vector<int> arr; // Vector to store elements
+        
+        // Populate arr with elements from 1 to m, repeated n times
+        bool found = true; // Flag to track if we have populated enough elements
+        for (int i = 1; i <= n; i++)
+        {
+            for (int j = 1; j <= m; j++)
+            {
+                if (arr.size() == n) // If we have filled arr with n elements
+                {
+                    found = false;
+                    break; // Exit inner loop
+                }
+                arr.push_back(j); // Add element j to arr
+            }
+            if (!found)
+                break; // Exit outer loop if arr is filled
+        }
+        
+        // Array to store frequency details: par[0] - max frequency, par[1] - index, par[2] - most frequent element
+        int par[3] = {0, 0, 0};
+        sort(arr.begin(), arr.end()); // Sort arr
+        
+        int mx = 0; // Variable to track current frequency
+        // Loop to find maximum frequency and related details
+        for (int i = 0; i < n + 1; i++)
+        {
+            if (arr[i] == arr[par[1]]) // If current element is the same as the previously counted element
+            {
+                mx++;
+            }
+            else
+            {
+                if (mx > par[0]) // If current frequency is greater than recorded max frequency
+                {
+                    par[0] = mx; // Update max frequency
+                    par[2] = i - 1; // Update index of most frequent element
+                }
+                mx = 0; // Reset frequency counter
+                if (i < n)
+                    par[1] = i; // Update index of current element
+                
+                if (arr[i] == arr[par[1]]) // Count the current element
+                {
+                    mx++;
+                }
+            }
+        }
+        
+        // Count how many times the most frequent element appears
+        int koita = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (arr[i] == arr[par[2]])
+                koita++;
+        }
+        
+        // Compare with k and output result
+        if (k < n - koita) // If k is less than the number of times the most frequent element appears
+            cout << "yes\n";
+        else
+            cout << "no\n";
+    }
+    
+    return 0;
+}

@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int x, y;
+        cin >> x >> y;
+
+        int m = (y + 1) / 2;  // Calculate m
+
+        int z;
+        if (y % 2 == 0)       // y is even
+        {
+            z = 7 * m;
+        }
+        else                  // y is odd
+        {
+            z = 7 * (m - 1) + 11;
+        }
+
+        if (z >= x)
+        {
+            cout << m << "\n";
+        }
+        else
+        {
+            m += (x - z + 14) / 15;
+            cout << m << "\n";
+        }
+    }
+    return 0;
+}

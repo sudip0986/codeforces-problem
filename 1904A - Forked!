@@ -1,0 +1,65 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+      int a,b,x,y,p,q;
+      cin>>a>>b>>x>>y>>p>>q;
+      vector<pair<int,int>>king(8);
+      vector<pair<int,int>>queen(8);
+      //king
+     {
+        king[0]={(x+a),(y+b)};
+        king[1]={(x+a),(y-b)};
+        king[2]={(x-a),(y+b)};
+        king[3]={(x-a),(y-b)};
+        swap(a,b);
+        king[4]={(x+a),(y+b)};
+        king[5]={(x+a),(y-b)};
+        king[6]={(x-a),(y+b)};
+        king[7]={(x-a),(y-b)};
+        swap(a,b);
+     }
+     //Queen
+     {
+        queen[0]={(p+a),(q+b)};
+        queen[1]={(p+a),(q-b)};
+        queen[2]={(p-a),(q+b)};
+        queen[3]={(p-a),(q-b)};
+        swap(a,b);
+       queen[4]={(p+a),(q+b)};
+        queen[5]={(p+a),(q-b)};
+        queen[6]={(p-a),(q+b)};
+        queen[7]={(p-a),(q-b)};
+        swap(a,b);
+     }
+
+     int sum=0;
+     for(int i=0; i<8 ;i++)
+     {
+         for(int j=0; j<8; j++)
+         {
+             if(king[i]==queen[j])
+             sum++;
+         }
+     }
+     
+     if(a==b)
+     sum/=4;
+     
+     cout<<sum<<"\n";
+     
+    
+
+
+    //  for(int i=0; i<8; i++) cout<<king[i].first<<","<<king[i].second<<"  ";
+    //  cout<<endl;
+    //    for(int i=0; i<8; i++) cout<<queen[i].first<<","<<queen[i].second<<"  ";
+     
+    }
+}

@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int cc;
+    cin >> cc;
+    while (cc--)
+    {
+        vector<int> t(3);
+        for (int i = 0; i < 3; i++)
+            cin >> t[i];
+
+        int mini = t[0];
+        for (int i = 1; i < 3; i++)
+        {
+            mini = min(mini, t[i]);
+        }
+
+        int time = 3;
+        while (time--)
+        {
+            int current_size = t.size();
+            for (int i = 0; i < current_size; i++)
+            {
+                if (t[i] > mini)
+                {
+                    t[i] -= mini;
+                    t.push_back(mini);
+                    break;
+                }
+            }
+        }
+
+        bool found = true;
+        for (int i = 1; i < t.size(); i++)
+        {
+            if (t[0] != t[i])
+            {
+                cout << "NO\n";
+                found = false;
+                break;
+            }
+        }
+        if (found)
+            cout << "YES\n";
+    }
+    return 0;
+}
